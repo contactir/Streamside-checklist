@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>24 Streamside Ln – Guest Checklist</title>
+<meta name="description" content="Touch-friendly guest checklist for 24 Streamside Ln with automatic email sending (EmailJS) and all house rules." />
+<style>
+  :root{--pad:16px;--radius:14px;--gap:12px;}
+  html,body{margin:0;padding:0;background:#f7f7fb;color:#111;font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,'Helvetica Neue',Arial,'Noto Sans',sans-serif;}
+  header{position:sticky;top:0;background:#ffffffcc;backdrop-filter:saturate(180%) blur(8px);border-bottom:1px solid #e5e5ef;z-index:10}
+  .wrap{max-width:880px;margin:0 auto;padding:0 var(--pad);}
+  h1{font-size:22px;margin:14px 0;}
+  .card{background:#fff;border:1px solid #e5e5ef;border-radius:16px;padding:16px;margin:16px 0;box-shadow:0 1px 0 rgba(0,0,0,.02)}
+  .card h2{font-size:18px;margin:0 0 10px}
+  .row{display:flex;gap:var(--gap);flex-wrap:wrap}
+  .field{flex:1 1 220px;display:flex;flex-direction:column;gap:6px}
+  input[type="text"], textarea{
+    padding:12px;border:1px solid #d8d8e2;border-radius:12px;background:#fafafe;font-size:16px;outline:none;
+  }
+  textarea{min-height:90px}
+  .item{display:flex;gap:12px;align-items:flex-start;padding:12px;border-radius:12px;border:1px solid #ececf3;background:#fcfcff;margin:8px 0}
+  .item input{transform:scale(1.4);margin-top:4px}
+  .label{flex:1}
+  .hint{color:#5b5b6e;font-size:13px;margin-top:4px}
+  .codes{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px;margin-top:8px}
+  .code{background:#0f172a;color:#e2e8f0;border-radius:12px;padding:10px 12px;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:14px;border:1px solid #1f2937}
+  .code b{color:#fff}
+  .btnrow{display:flex;gap:10px;flex-wrap:wrap;margin:18px 0}
+  button{appearance:none;border:none;border-radius:12px;padding:12px 16px;font-size:16px;cursor:pointer}
+  .primary{background:#111827;color:#fff}
+  .ghost{background:#eef2ff;color:#1e3a8a;border:1px solid #c7d2fe}
+  .ok{background:#ecfdf5;color:#065f46;border:1px solid #a7f3d0}
+  .small{font-size:13px;color:#5b5b6e}
+  .caps{letter-spacing:.02em;text-transform:uppercase;font-size:12px;color:#6b7280}
+  .important{background:#fff7ed;border:1px solid #fed7aa}
+  .gluten{background:#fef2f2;border:1px solid #fecaca}
+  .sticky-footer{position:sticky;bottom:0;background:#ffffffcc;backdrop-filter:saturate(180%) blur(8px);border-top:1px solid #e5e5ef;z-index:10}
+</style>
+</head>
+<body>
+  <header>
+    <div class="wrap">
+      <h1>🏡 24 Streamside Ln — Guest Checklist</h1>
+      <div class="small">Touch to check off items. Your progress is saved on this device.</div>
+      <div class="codes">
+        <div class="code">Front Door & Garage Code: <b>3445</b></div>
+        <div class="code">Garbage Area (next to visitor parking) Code: <b>145</b></div>
+        <div class="code">Wi‑Fi: <b>Monkey</b> &nbsp;&middot;&nbsp; Password: <b>@Alpine3445.</b></div>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <div class="card">
+      <h2>Guest & Stay Details</h2>
+      <div class="row">
+        <div class="field"><label>Guest name</label><input id="guestName" type="text" placeholder="Your name"></div>
+        <div class="field"><label>Arrival date</label><input id="arrivalDate" type="text" placeholder="YYYY-MM-DD"></div>
+        <div class="field"><label>Departure date</label><input id="departureDate" type="text" placeholder="YYYY-MM-DD"></div>
+      </div>
+    </div>
+
+    <div class="card gluten">
+      <h2>Food Safety — <span style="color:#991b1b">No Gluten Inside</span></h2>
+      <div class="item"><input type="checkbox" data-id="gluten-rule"><div class="label">
+        <b>Nothing with gluten is allowed inside the home.</b> If eating bread, pizza, or other gluten items, they must be consumed <b>outside</b> only. 
+        <div class="hint">No gluten may contact utensils, the toaster, or counters.</div>
+      </div></div>
+    </div>
+
+    <div class="card">
+      <h2>Arrival</h2>
+      <div class="item"><input type="checkbox" data-id="arrive-sheets"><div class="label">
+        Retrieve clean king sheets & pillowcases from the <b>dryer</b> and make the master bed.
+      </div></div>
+      <div class="item"><input type="checkbox" data-id="arrival-quiet"><div class="label">
+        Be mindful of <b>quiet hours 10:00 PM – 7:00 AM</b> throughout your stay.
+      </div></div>
+    </div>
+
+    <div class="card">
+      <h2>Kitchen Notes</h2>
+      <div class="item"><input type="checkbox" data-id="kitchen-micro"><div class="label">
+        The microwave is a <b>drawer</b>, not a door—pull gently to open/close.
+      </div></div>
+      <div class="item"><input type="checkbox" data-id="kitchen-stoveoff"><div class="label">
+        Confirm the <b>stove is completely turned off</b> after use.
+      </div></div>
+      <div class="item"><input type="checkbox" data-id="kitchen-unplug-toaster"><div class="label">
+        <b>Unplug small appliances</b> like the toaster after use.
+      </div></div>
+      <div class="item"><input type="checkbox" data-id="kitchen-bbq"><div class="label">
+        If you used the BBQ, <b>turn off the propane tank</b> and clean the grill.
+      </div></div>
+    </div>
+
+    <div class="card">
+      <h2>Thermostats & Fireplace</h2>
+      <div class="item"><input type="checkbox" data-id="therm-howto"><div class="label">
+        Upstairs bedroom thermostat: <b>press both buttons at the same time</b> to set mode. 
+        <div class="hint">Cooling mode: snowflake appears after flashing stops. Warming mode: rounded flake icon. Typically cooling at night and warming in the morning.</div>
+      </div></div>
+      <div class="item"><input type="checkbox" data-id="therm-leave"><div class="label">
+        On departure, set all thermostats to <b>15°C / 62°F</b>.
+      </div></div>
+      <div class="item"><input type="checkbox" data-id="fireplace-off"><div class="label">
+        Ensure the <b>fireplace is turned off</b>.
+      </div></div>
+    </div>
+
+    <div class="card">
+      <h2>Garbage & Recycling</h2>
+      <div class="item"><input type="checkbox" data-id="garbage-area"><div class="label">
+        Garbage house is <b>next to visitor parking</b> (code <b>145</b>).
+      </div></div>
+      <div class="item"><input type="checkbox" data-id="remove-garbage"><div class="label">
+        Remove all <b>garbage & recycling</b> from the unit.
+      </div></div>
+      <div class="item"><input type="checkbox" data-id="remove-perishables"><div class="label">
+        Remove all <b>perishables</b> from the refrigerator.
+      </div></div>
+    </div>
+
+    <div class="card">
+      <h2>Laundry (Departure)</h2>
+      <div class="item"><input type="checkbox" data-id="laundry-wash"><div class="label">
+        Strip the king bed; <b>wash sheets, pillowcases, and all towels used</b>.
+      </div></div>
+      <div class="item"><input type="checkbox" data-id="laundry-run-dryer"><div class="label">
+        Place items back in the <b>dryer and run</b> it before leaving.
+      </div></div>
+    </div>
+
+    <div class="card">
+      <h2>Security</h2>
+      <div class="item"><input type="checkbox" data-id="lock-front"><div class="label">
+        <b>Lock the front door</b>.
+      </div></div>
+      <div class="item"><input type="checkbox" data-id="close-garage"><div class="label">
+        Confirm the <b>garage door is fully closed</b>.
+      </div></div>
+      <div class="item"><input type="checkbox" data-id="lock-back"><div class="label">
+        Ensure the <b>back door to the deck is locked</b>.
+      </div></div>
+      <div class="item"><input type="checkbox" data-id="close-windows"><div class="label">
+        Ensure <b>all windows are securely closed</b>.
+      </div></div>
+      <div class="item"><input type="checkbox" data-id="lights-off"><div class="label">
+        Turn <b>all lights off</b>.
+      </div></div>
+    </div>
+
+    <div class="card important">
+      <h2>Accidents & Departure Notice</h2>
+      <div class="item"><input type="checkbox" data-id="report-breakage"><div class="label">
+        If anything is accidentally broken, please <b>let us know right away</b> (not necessarily looking for replacement—just awareness).
+      </div></div>
+      <div class="item"><input type="checkbox" data-id="notify-depart"><div class="label">
+        Please <b>let us know when you have departed</b>.
+      </div></div>
+    </div>
+
+    <div class="card">
+      <h2>Notes (optional)</h2>
+      <textarea id="notes" placeholder="Anything we should know about your stay?"></textarea>
+    </div>
+
+    <div class="btnrow">
+      <button class="ghost" id="reset">Reset All</button>
+      <button class="ok" id="share">Share/Print Summary</button>
+      <button class="primary" id="email">Email Completed Checklist</button>
+    </div>
+
+    <div class="small">
+      This page can send your completion summary automatically when all items are checked, using EmailJS (if configured by the host).
+    </div>
+
+    <div class="sticky-footer">
+      <div class="wrap" style="display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 0;">
+        <div class="small">Progress: <span id="progress">0 / 0</span> completed</div>
+        <div class="small"><span id="autosendStatus"></span></div>
+      </div>
+    </div>
+  </main>
+
+<!-- EmailJS (for automatic sending) -->
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+<script>
+(function(){
+  // ====== CONFIG (fill these three for auto-send) ======
+  const EMAILJS_PUBLIC_KEY = "";     // e.g., "34xxyyzzAbC123"
+  const EMAILJS_SERVICE_ID = "";     // e.g., "service_abc123"
+  const EMAILJS_TEMPLATE_ID = "";    // e.g., "template_xyz789"
+  const TO_EMAIL = "scott@scottberry.ca"; // where the summary is sent
+  // =====================================================
+
+  const autosendStatus = document.getElementById('autosendStatus');
+  const isEmailJSReady = EMAILJS_PUBLIC_KEY && EMAILJS_SERVICE_ID && EMAILJS_TEMPLATE_ID;
+  if(isEmailJSReady){
+    try{ emailjs.init(EMAILJS_PUBLIC_KEY); autosendStatus.textContent = "Auto‑email enabled"; }
+    catch(e){ autosendStatus.textContent = "EmailJS init error"; }
+  }else{
+    autosendStatus.textContent = "Auto‑email not configured";
+  }
+
+  const STORAGE_KEY = "streamside-checklist-v3";
+  const FIELDS = ["guestName","arrivalDate","departureDate","notes"];
+  const items = Array.from(document.querySelectorAll('input[type="checkbox"][data-id]'));
+  const progressEl = document.getElementById('progress');
+
+  function load(){
+    try{
+      const raw = localStorage.getItem(STORAGE_KEY);
+      if(!raw) return;
+      const data = JSON.parse(raw);
+      FIELDS.forEach(id => { if(data[id] !== undefined){ document.getElementById(id).value = data[id]; } });
+      items.forEach(cb => { if(data[cb.dataset.id] !== undefined){ cb.checked = !!data[cb.dataset.id]; } });
+    }catch(e){}
+  }
+
+  function save(){
+    const data = {};
+    FIELDS.forEach(id => data[id] = document.getElementById(id).value);
+    items.forEach(cb => data[cb.dataset.id] = cb.checked);
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+    updateProgress();
+  }
+
+  function updateProgress(){
+    const total = items.length;
+    const done = items.filter(cb => cb.checked).length;
+    progressEl.textContent = done + " / " + total;
+    // Trigger auto-send once when all are completed
+    const emailed = localStorage.getItem(STORAGE_KEY + "-emailed") === "1";
+    if(total > 0 && done === total && !emailed){
+      autoEmail();
+    }
+  }
+
+  function summaryText(){
+    const lines = [];
+    const name = document.getElementById('guestName').value || "(Guest)";
+    const arr = document.getElementById('arrivalDate').value || "";
+    const dep = document.getElementById('departureDate').value || "";
+    lines.push("Guest: " + name);
+    lines.push("Arrival: " + arr + "  |  Departure: " + dep);
+    lines.push("");
+    lines.push("Checklist status:");
+    items.forEach(cb => {
+      const label = cb.parentElement.querySelector('.label').innerText.trim().replace(/\s+/g,' ');
+      lines.push((cb.checked ? "✅ " : "⬜ ") + label);
+    });
+    const notes = (document.getElementById('notes').value || "").trim();
+    if(notes){ lines.push(""); lines.push("Notes: " + notes); }
+    return lines.join("\n");
+  }
+
+  async function autoEmail(){
+    const subject = "Streamside Checkout – " + (document.getElementById('guestName').value || "Guest");
+    const body = summaryText();
+    const guest_name = document.getElementById('guestName').value || "Guest";
+    const arrival_date = document.getElementById('arrivalDate').value || "";
+    const departure_date = document.getElementById('departureDate').value || "";
+
+    if(isEmailJSReady){
+      try{
+        await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
+          to_email: TO_EMAIL,
+          subject,
+          body,
+          guest_name,
+          arrival_date,
+          departure_date
+        });
+        localStorage.setItem(STORAGE_KEY + "-emailed", "1");
+        autosendStatus.textContent = "Auto‑email sent ✅";
+        alert("Thanks! Your completed checklist has been sent.");
+      }catch(e){
+        autosendStatus.textContent = "Auto‑email failed";
+        alert("We couldn't auto‑send just now. You can tap 'Email Completed Checklist' instead.");
+      }
+    }else{
+      // Fallback: open user's email app
+      const href = "mailto:" + encodeURIComponent(TO_EMAIL) + "?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
+      window.location.href = href;
+      localStorage.setItem(STORAGE_KEY + "-emailed", "1");
+    }
+  }
+
+  function manualEmail(){
+    localStorage.removeItem(STORAGE_KEY + "-emailed"); // allow manual send again
+    autoEmail();
+  }
+
+  // Event bindings
+  FIELDS.forEach(id => document.getElementById(id).addEventListener('input', save));
+  items.forEach(cb => cb.addEventListener('change', save));
+  document.getElementById('reset').addEventListener('click', () => {
+    if(!confirm("Reset all fields and checkboxes?")) return;
+    localStorage.removeItem(STORAGE_KEY);
+    localStorage.removeItem(STORAGE_KEY + "-emailed");
+    FIELDS.forEach(id => document.getElementById(id).value = "");
+    items.forEach(cb => cb.checked = false);
+    updateProgress();
+  });
+  document.getElementById('share').addEventListener('click', () => {
+    const txt = summaryText();
+    if(navigator.share){
+      navigator.share({title:"Streamside Checkout", text:txt}).catch(()=>{
+        navigator.clipboard.writeText(txt); alert("Summary copied to clipboard.");
+      });
+    }else{
+      navigator.clipboard.writeText(txt);
+      alert("Summary copied to clipboard. You can paste into email or notes.");
+    }
+  });
+  document.getElementById('email').addEventListener('click', manualEmail);
+
+  // Init
+  load();
+  updateProgress();
+})();
+</script>
+</body>
+</html>
